@@ -1,426 +1,222 @@
 # 🩺 PCOS Health Tracker API
 
-> A smart backend system for tracking PCOS symptoms with intelligent insights, pattern recognition, and predictive analytics for women's health management.
+> A smart backend system for tracking PCOS symptoms with intelligent insights and predictive analytics for women's health management.
 
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-## 🌟 Overview
+## 🎯 Overview
 
-The PCOS Health Tracker API is a comprehensive backend solution designed to help women with Polycystic Ovary Syndrome (PCOS) monitor their symptoms, identify patterns, and gain valuable health insights. The system goes beyond simple data storage by providing intelligent analysis, risk assessment, and predictive capabilities.
+A comprehensive REST API that helps women with PCOS track symptoms, analyze patterns, and get intelligent health insights. The system provides smart analysis beyond basic data storage - including risk assessment, pattern recognition, and period prediction.
 
-### 🎯 Key Features
+## ✨ Key Features
 
-- **Smart Symptom Analysis**: Detects patterns and correlations between symptoms
-- **Risk Assessment**: Calculates personalized PCOS risk scores
-- **Period Prediction**: Predicts menstrual cycles based on historical data
-- **Pattern Recognition**: Identifies triggers and symptom relationships
-- **Comprehensive Reporting**: Generates detailed health insights
+- **Smart Symptom Analysis** - Detects patterns like sleep-fatigue correlations
+- **PCOS Risk Assessment** - Calculates personalized risk scores (0-10 scale)
+- **Period Prediction** - Predicts next cycle based on historical data
+- **Pattern Recognition** - Identifies symptom triggers and relationships
+- **Comprehensive Reports** - Detailed health insights and recommendations
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn package manager
-
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/pcos-health-tracker.git
-   cd pcos-health-tracker
-   ```
+```bash
+# 1. Clone and setup
+git clone <repository-url>
+cd pcos-health-tracker
+npm install
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+# 2. Initialize sample data
+node data/seed.js
 
-3. **Initialize sample data**
-   ```bash
-   node data/seed.js
-   ```
+# 3. Start server
+node server.js
+```
 
-4. **Start the server**
-   ```bash
-   node server.js
-   ```
-
-5. **Verify installation**
-   Open your browser and navigate to `http://localhost:3000`
+Server runs on `http://localhost:3000`
 
 ## 📁 Project Structure
 
 ```
 pcos-health-tracker/
-├── 📄 server.js              # Main Express server
-├── 📁 routes/
-│   ├── users.js              # User management endpoints
-│   ├── symptoms.js           # Symptom tracking endpoints
-│   └── intelligence.js       # AI-powered analysis endpoints
-├── 📁 services/
-│   └── analyzer.js           # Core intelligence algorithms
-├── 📁 data/
-│   ├── users.json           # User database (JSON storage)
-│   ├── symptoms.json        # Symptom database with rich test data
-│   ├── pcos-knowledge.json  # Medical knowledge base
-│   └── seed.js              # Sample data generator
-├── 📁 utils/
-└── 📄 README.md
+├── server.js              # Main Express server
+├── routes/
+│   ├── users.js          # User management endpoints
+│   ├── symptoms.js       # Symptom tracking endpoints  
+│   └── intelligence.js   # AI analysis endpoints
+├── services/
+│   └── analyzer.js       # Smart analysis algorithms
+├── data/
+│   ├── seed.js          # Sample data generator
+│   ├── users.json       # User database
+│   ├── symptoms.json    # Symptom database
+│   └── pcos-knowledge.json # Medical knowledge base
+└── README.md
 ```
 
-## 🔥 Core Features & Implementation
+## 📱 API Endpoints
 
-### 1. 👥 User Management System
+### User Management
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/users/register` | Register new user |
+| `GET` | `/api/users/profile/:userId` | Get user profile |
 
-**Registration & Profile Management**
-- Secure user registration with health metrics
-- Profile retrieval and management
-- Validation for required health parameters
+### Symptom Tracking  
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/symptoms/log` | Log daily symptoms |
+| `GET` | `/api/symptoms/history/:userId` | Get symptom history |
+| `GET` | `/api/symptoms/date/:userId/:date` | Get symptoms for date |
 
-```javascript
-// Example: Register new user
-POST /api/users/register
-{
-  "name": "Priya Sharma",
-  "age": 25,
-  "weight": 65,
-  "height": 160,
-  "avgCycleLength": 32
-}
-```
+### Smart Analysis
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/intelligence/insights/:userId` | Get pattern insights |
+| `GET` | `/api/intelligence/risk-score/:userId` | Get PCOS risk score |
+| `GET` | `/api/intelligence/predict-period/:userId` | Predict next period |
+| `GET` | `/api/intelligence/report/:userId` | Comprehensive report |
 
-### 2. 📊 Advanced Symptom Tracking
+## 🧪 Testing with Sample Data
 
-**Multi-dimensional Symptom Logging**
-- Track multiple symptoms per day
-- Severity rating system (1-10 scale)
-- Detailed notes and context
-- Historical data analysis
+The project includes extensive test data for **user1** with 28+ symptom entries spanning 2 months (April-May 2025):
 
-```javascript
-// Example: Log daily symptoms
-POST /api/symptoms/log
-{
-  "userId": "user1",
-  "date": "2025-05-25",
-  "symptoms": ["fatigue", "mood_swings", "acne"],
-  "severity": {
-    "fatigue": 8,
-    "mood_swings": 6,
-    "acne": 5
-  },
-  "notes": "High stress day, poor sleep quality"
-}
-```
+### Pre-loaded Data Includes:
+- **Complete menstrual cycles** (April 1-5, May 3-6) 
+- **Sleep-fatigue patterns** (poor sleep → extreme fatigue next day)
+- **Stress correlations** (work stress → mood swings, acne)
+- **PCOS symptoms** (irregular periods, weight gain, hair loss)
+- **Recovery periods** (good sleep → high energy days)
 
-### 3. 🧠 Intelligent Pattern Recognition
-
-**Smart Correlation Detection**
-- Sleep-fatigue relationship analysis
-- Stress-symptom correlation mapping
-- Frequency pattern identification
-- Trigger identification
-
-**Algorithm Highlights:**
-- Analyzes symptom co-occurrence patterns
-- Calculates confidence levels for predictions
-- Provides actionable recommendations
-
-### 4. 📈 PCOS Risk Assessment
-
-**Sophisticated Risk Calculation**
-```javascript
-Risk Score = Σ(symptom_weight × severity × frequency) / total_entries
-```
-
-**Risk Categories:**
-- **Low (0-3)**: Well-managed symptoms
-- **Moderate (3-6)**: Some areas of concern
-- **High (6-10)**: Requires medical attention
-
-### 5. 🔮 Predictive Period Tracking
-
-**Cycle Prediction Algorithm**
-- Analyzes historical period data
-- Calculates average cycle length
-- Provides confidence-based predictions
-- Offers preparation recommendations
-
-## 📱 API Reference
-
-### User Endpoints
-
-| Method | Endpoint | Description | Request Body |
-|--------|----------|-------------|--------------|
-| `POST` | `/api/users/register` | Register new user | `{name, age, weight, height?, avgCycleLength?}` |
-| `GET` | `/api/users/profile/:userId` | Get user profile | None |
-
-### Symptom Endpoints
-
-| Method | Endpoint | Description | Request Body |
-|--------|----------|-------------|--------------|
-| `POST` | `/api/symptoms/log` | Log daily symptoms | `{userId, date, symptoms[], severity{}, notes?}` |
-| `GET` | `/api/symptoms/history/:userId` | Get symptom history | None |
-| `GET` | `/api/symptoms/date/:userId/:date` | Get symptoms for specific date | None |
-
-### Intelligence Endpoints
-
-| Method | Endpoint | Description | Response |
-|--------|----------|-------------|----------|
-| `GET` | `/api/intelligence/insights/:userId` | Smart pattern analysis | Correlations, patterns, recommendations |
-| `GET` | `/api/intelligence/risk-score/:userId` | PCOS risk assessment | Risk score, level, contributing factors |
-| `GET` | `/api/intelligence/predict-period/:userId` | Period prediction | Next period date, confidence, tips |
-| `GET` | `/api/intelligence/report/:userId` | Comprehensive health report | Complete analysis summary |
-
-## 🧪 Testing & Demo
-
-### Pre-loaded Test Data
-
-The system comes with extensive test data for **user1** covering a 2-month period (April-May 2025) with 28+ symptom entries, including:
-
-**Complete Menstrual Cycles:**
-- April cycle: Period from April 1-5, late May period (May 3-6)
-- Irregular cycle patterns for realistic PCOS simulation
-
-**Diverse Symptom Patterns:**
-- Sleep-fatigue correlations (poor sleep → extreme fatigue)
-- Stress-related symptom clusters
-- Hormonal fluctuation effects
-- Recovery and positive days
-
-**Rich Data Points:**
-- Period tracking with cramps and flow intensity
-- Sleep quality variations (2-9 hours)
-- Stress episodes with emotional impacts
-- Acne and hair loss patterns
-- Weight and bloating fluctuations
-
-### Quick API Testing
+### Quick Test Commands:
 
 ```bash
-# 1. Check server status
+# Check server status
 curl http://localhost:3000
 
-# 2. Get comprehensive insights for test user
+# Get comprehensive analysis for test user
 curl http://localhost:3000/api/intelligence/report/user1
 
-# 3. View symptom history
+# View symptom history  
 curl http://localhost:3000/api/symptoms/history/user1
 
-# 4. Get period prediction
+# Get period prediction
 curl http://localhost:3000/api/intelligence/predict-period/user1
 
-# 5. Check risk assessment
+# Check risk assessment
 curl http://localhost:3000/api/intelligence/risk-score/user1
 ```
 
-### Expected Demo Results
+### Expected Demo Results:
+- **Pattern Detection**: Sleep-fatigue correlation (85% confidence)
+- **Risk Score**: Moderate level (~6.2/10) 
+- **Period Prediction**: Next cycle based on 32-day average
+- **Top Symptoms**: Fatigue, mood swings, acne
 
-With the pre-loaded data, you'll see:
+## 🔧 API Usage Examples
 
-1. **Pattern Recognition**: Strong sleep-fatigue correlation (85% confidence)
-2. **Risk Score**: Moderate risk level (~6.2/10) due to multiple symptoms
-3. **Period Prediction**: Next cycle prediction based on 32-day average
-4. **Most Common Symptoms**: Fatigue, mood swings, acne as top patterns
-
-## 🔧 Technical Implementation
-
-### Architecture Highlights
-
-- **RESTful Design**: Clean API structure following REST principles
-- **Modular Architecture**: Separated concerns for maintainability
-- **JSON File Storage**: Easy to understand and migrate to databases
-- **Error Handling**: Comprehensive error responses with meaningful messages
-- **Data Validation**: Input validation for all endpoints
-
-### Smart Algorithms
-
-**Pattern Detection Engine:**
-```javascript
-// Correlation analysis
-const correlationStrength = (symptom1Occurrences, symptom2Occurrences, totalDays) => {
-  return overlapDays / Math.min(symptom1Days, symptom2Days);
-};
-```
-
-**Risk Calculation Formula:**
-```javascript
-const calculateRisk = (symptoms, knowledge) => {
-  return symptoms.reduce((total, entry) => {
-    return total + (symptomWeight * severity * frequency);
-  }, 0) / totalEntries;
-};
-```
-
-### Data Models
-
-**User Schema:**
-```json
-{
-  "id": "string",
-  "name": "string",
-  "age": "number",
-  "weight": "number",
-  "height": "number",
-  "avgCycleLength": "number",
-  "registeredDate": "date"
-}
-```
-
-**Symptom Entry Schema:**
-```json
-{
-  "id": "string",
-  "userId": "string",
-  "date": "date",
-  "symptoms": ["array"],
-  "severity": {"object"},
-  "notes": "string",
-  "loggedAt": "timestamp"
-}
-```
-
-## 🌟 Real-World Impact
-
-### For Users
-- **Self-awareness**: Understanding personal PCOS patterns
-- **Proactive management**: Early symptom detection and management
-- **Healthcare communication**: Detailed reports for doctor visits
-- **Lifestyle optimization**: Data-driven lifestyle adjustments
-
-### For Healthcare Providers
-- **Patient insights**: Comprehensive symptom history
-- **Treatment tracking**: Monitor intervention effectiveness
-- **Risk assessment**: Objective health risk evaluation
-- **Care personalization**: Tailored treatment recommendations
-
-## 🚀 Future Enhancements
-
-### Phase 2 Features
-- [ ] **PDF Report Generation**: Exportable health reports
-- [ ] **Medication Tracking**: Prescription and supplement monitoring
-- [ ] **Nutrition Integration**: Diet pattern analysis
-- [ ] **Exercise Correlation**: Activity impact on symptoms
-
-### Phase 3 Features
-- [ ] **Wearable Integration**: Heart rate, sleep data from devices
-- [ ] **Machine Learning**: Advanced pattern prediction
-- [ ] **Telemedicine**: Doctor consultation scheduling
-- [ ] **Community Features**: Anonymous support groups
-
-### Technical Roadmap
-- [ ] **Database Migration**: PostgreSQL/MongoDB integration
-- [ ] **Authentication**: JWT-based user security
-- [ ] **Real-time Updates**: WebSocket implementation
-- [ ] **Mobile SDK**: React Native integration
-
-## 🛠️ Development Setup
-
-### Local Development
-
+### Register User
 ```bash
-# Install dependencies
-npm install
-
-# Run in development mode (with auto-reload)
-npm install -g nodemon
-nodemon server.js
-
-# Run tests
-npm test
-
-# Generate sample data
-node data/generate-extended-data.js
+curl -X POST http://localhost:3000/api/users/register \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Priya", "age": 25, "weight": 65, "height": 160}'
 ```
 
-### Environment Configuration
-
-Create `.env` file:
+### Log Symptoms
+```bash
+curl -X POST http://localhost:3000/api/symptoms/log \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": "user1",
+    "date": "2025-05-25", 
+    "symptoms": ["fatigue", "mood_swings"],
+    "severity": {"fatigue": 8, "mood_swings": 6},
+    "notes": "Poor sleep last night"
+  }'
 ```
-PORT=3000
-NODE_ENV=development
-API_VERSION=1.0.0
+
+## 🧠 Smart Features Implementation
+
+### 1. Pattern Recognition Algorithm
+Analyzes symptom co-occurrence and identifies correlations:
+```javascript
+// Example: Sleep-fatigue correlation detection
+const fatigueAfterPoorSleep = symptoms.filter(entry => 
+  entry.symptoms.includes('poor_sleep') && 
+  nextDay.symptoms.includes('fatigue')
+);
 ```
 
-### Code Quality
+### 2. Risk Score Calculation
+```javascript
+Risk Score = Σ(symptom_weight × severity × frequency) / total_entries
 
-- **ESLint**: Code linting and formatting
-- **Prettier**: Code formatting standards
-- **JSDoc**: Comprehensive code documentation
+// Example weights:
+fatigue: 0.2, irregular_periods: 0.3, mood_swings: 0.15
+```
 
-## 📊 Sample API Responses
+### 3. Period Prediction
+```javascript
+// Calculates average cycle length from historical period data
+const avgCycle = periodGaps.reduce((sum, gap) => sum + gap) / periods.length;
+const nextPeriod = lastPeriod + avgCycle;
+```
 
-### Intelligence Insights Response
+## 📊 Sample API Response
+
 ```json
 {
   "success": true,
   "data": {
-    "userId": "user1",
     "insights": [
       {
         "type": "correlation",
-        "title": "Sleep-Fatigue Connection",
-        "message": "Poor sleep strongly correlates with next-day fatigue",
+        "title": "Sleep-Fatigue Connection", 
         "confidence": 0.85,
-        "recommendation": "Prioritize 7-8 hours of quality sleep"
+        "recommendation": "Focus on getting 7-8 hours of quality sleep"
       }
     ],
-    "analyzedAt": "2025-05-25T10:30:00Z"
-  }
-}
-```
-
-### Risk Score Response
-```json
-{
-  "success": true,
-  "data": {
     "riskScore": {
       "score": 6.2,
       "level": "moderate",
-      "message": "Multiple symptoms detected. Consider lifestyle adjustments.",
-      "factors": ["fatigue", "irregular_periods", "mood_swings"]
+      "message": "Some symptoms to watch. Consider lifestyle adjustments."
+    },
+    "periodPrediction": {
+      "prediction": "2025-06-04",
+      "confidence": 0.8,
+      "message": "Based on your 32-day average cycle"
     }
   }
 }
 ```
 
-## 🤝 Contributing
+## 🎯 Technical Highlights
 
-We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details.
+- **RESTful API Design** with proper HTTP methods
+- **Modular Architecture** for easy maintenance  
+- **JSON File Storage** (easily replaceable with database)
+- **Smart Algorithms** for health pattern analysis
+- **Comprehensive Error Handling** with meaningful messages
+- **Medical Knowledge Base** for accurate PCOS insights
 
-### Development Process
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
+## 💡 Real-World Application
 
-## 📄 License
+This API enables:
+- **Self-monitoring** for PCOS patients
+- **Pattern identification** for better symptom management
+- **Predictive insights** for proactive healthcare
+- **Data-driven decisions** for lifestyle improvements
+- **Healthcare communication** with detailed reports
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🔮 Future Enhancements
 
-## 🙏 Acknowledgments
-
-- **Medical Advisors**: For PCOS symptom validation
-- **Women's Health Community**: For real-world insights
-- **Open Source Contributors**: For continuous improvements
-
-## 📞 Support & Contact
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/pcos-health-tracker/issues)
-- **Documentation**: [Wiki](https://github.com/yourusername/pcos-health-tracker/wiki)
-- **Email**: support@pcoshealthtracker.com
+- Database integration (PostgreSQL/MongoDB)
+- User authentication with JWT
+- PDF report generation
+- Wearable device integration
+- Machine learning for advanced predictions
 
 ---
 
-<div align="center">
-
-**Built with ❤️ for women's health empowerment**
-
-[⭐ Star this repo](https://github.com/yourusername/pcos-health-tracker) • [🐛 Report Bug](https://github.com/yourusername/pcos-health-tracker/issues) • [💡 Request Feature](https://github.com/yourusername/pcos-health-tracker/issues)
-
-</div>
+**Built for women's health empowerment through smart technology.**
