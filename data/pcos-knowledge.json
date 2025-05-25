@@ -1,0 +1,244 @@
+{
+  "symptoms": {
+    "irregular_periods": {
+      "weight": 0.35,
+      "commonTriggers": [
+        "hormonal_imbalance",
+        "stress",
+        "weight_changes"
+      ]
+    },
+    "weight_gain": {
+      "weight": 0.3,
+      "commonTriggers": [
+        "insulin_resistance",
+        "hormonal_changes",
+        "poor_diet"
+      ]
+    },
+    "hair_loss": {
+      "weight": 0.25,
+      "commonTriggers": [
+        "high_androgens",
+        "hormonal_imbalance"
+      ]
+    },
+    "fatigue": {
+      "weight": 0.2,
+      "commonTriggers": [
+        "poor_sleep",
+        "stress",
+        "hormonal_changes"
+      ]
+    },
+    "mood_swings": {
+      "weight": 0.18,
+      "commonTriggers": [
+        "hormonal_changes",
+        "poor_sleep",
+        "stress"
+      ]
+    },
+    "acne": {
+      "weight": 0.15,
+      "commonTriggers": [
+        "hormonal_changes",
+        "stress",
+        "poor_diet"
+      ]
+    },
+    "bloating": {
+      "weight": 0.12,
+      "commonTriggers": [
+        "diet",
+        "hormonal_changes",
+        "digestive_issues"
+      ]
+    },
+    "poor_sleep": {
+      "weight": 0.1,
+      "commonTriggers": [
+        "stress",
+        "hormonal_changes",
+        "lifestyle"
+      ]
+    },
+    "stress": {
+      "weight": 0.08,
+      "commonTriggers": [
+        "work",
+        "relationships",
+        "health_concerns"
+      ]
+    },
+    "cramps": {
+      "weight": 0.07,
+      "commonTriggers": [
+        "period",
+        "hormonal_changes"
+      ]
+    },
+    "period": {
+      "weight": 0.05,
+      "commonTriggers": [
+        "natural_cycle"
+      ]
+    },
+    "good_sleep": {
+      "weight": -0.05,
+      "commonTriggers": [
+        "good_routine",
+        "relaxation"
+      ]
+    },
+    "energy": {
+      "weight": -0.08,
+      "commonTriggers": [
+        "good_sleep",
+        "exercise",
+        "nutrition"
+      ]
+    },
+    "positive_mood": {
+      "weight": -0.1,
+      "commonTriggers": [
+        "good_sleep",
+        "exercise",
+        "social_support"
+      ]
+    },
+    "recovery": {
+      "weight": -0.05,
+      "commonTriggers": [
+        "rest",
+        "self_care"
+      ]
+    },
+    "relief": {
+      "weight": -0.03,
+      "commonTriggers": [
+        "symptom_management"
+      ]
+    }
+  },
+  "correlations": [
+    {
+      "symptom1": "poor_sleep",
+      "symptom2": "fatigue",
+      "strength": 0.92
+    },
+    {
+      "symptom1": "stress",
+      "symptom2": "poor_sleep",
+      "strength": 0.88
+    },
+    {
+      "symptom1": "stress",
+      "symptom2": "mood_swings",
+      "strength": 0.85
+    },
+    {
+      "symptom1": "hormonal_changes",
+      "symptom2": "acne",
+      "strength": 0.82
+    },
+    {
+      "symptom1": "weight_gain",
+      "symptom2": "bloating",
+      "strength": 0.75
+    },
+    {
+      "symptom1": "poor_diet",
+      "symptom2": "bloating",
+      "strength": 0.73
+    },
+    {
+      "symptom1": "stress",
+      "symptom2": "acne",
+      "strength": 0.7
+    },
+    {
+      "symptom1": "fatigue",
+      "symptom2": "mood_swings",
+      "strength": 0.68
+    },
+    {
+      "symptom1": "period",
+      "symptom2": "cramps",
+      "strength": 0.65
+    },
+    {
+      "symptom1": "good_sleep",
+      "symptom2": "fatigue",
+      "strength": -0.85
+    },
+    {
+      "symptom1": "exercise",
+      "symptom2": "mood_swings",
+      "strength": -0.7
+    },
+    {
+      "symptom1": "good_sleep",
+      "symptom2": "stress",
+      "strength": -0.65
+    }
+  ],
+  "riskFactors": {
+    "high_frequency_symptoms": {
+      "threshold": 15,
+      "weight": 0.3,
+      "message": "High symptom frequency detected"
+    },
+    "severe_symptoms": {
+      "threshold": 7,
+      "weight": 0.25,
+      "message": "Severe symptoms reported"
+    },
+    "sleep_disruption": {
+      "threshold": 5,
+      "weight": 0.2,
+      "message": "Chronic sleep issues"
+    },
+    "hormonal_symptoms": {
+      "symptoms": [
+        "irregular_periods",
+        "acne",
+        "hair_loss",
+        "weight_gain"
+      ],
+      "weight": 0.15,
+      "message": "Multiple hormonal symptoms"
+    },
+    "cycle_irregularity": {
+      "threshold": 5,
+      "weight": 0.1,
+      "message": "Irregular menstrual cycles"
+    }
+  },
+  "recommendations": {
+    "poor_sleep_fatigue": [
+      "Establish consistent sleep schedule (same bedtime/wake time)",
+      "Create calming bedtime routine (no screens 1 hour before)",
+      "Keep bedroom cool, dark, and quiet",
+      "Consider magnesium supplement (consult doctor first)"
+    ],
+    "stress_mood": [
+      "Practice daily stress management (meditation, deep breathing)",
+      "Regular exercise - even 15 minutes helps",
+      "Talk to someone - friend, family, or counselor",
+      "Consider stress management apps or techniques"
+    ],
+    "weight_bloating": [
+      "Focus on anti-inflammatory foods (fish, leafy greens)",
+      "Reduce processed foods and added sugars",
+      "Stay hydrated - aim for 8 glasses water daily",
+      "Consider food diary to identify triggers"
+    ],
+    "hormonal_symptoms": [
+      "Consult healthcare provider for hormone evaluation",
+      "Track symptoms consistently for medical discussions",
+      "Consider PCOS-specific nutrition plan",
+      "Regular exercise can help hormone balance"
+    ]
+  }
+}
