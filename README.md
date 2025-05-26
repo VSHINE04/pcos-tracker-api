@@ -23,12 +23,12 @@ A comprehensive REST API that helps women with PCOS track symptoms, analyze patt
 
 ```bash
 # 1. Clone and setup
-git clone <(https://github.com/VSHINE04/pcos-tracker-api)>
-cd pcos-health-tracker
+git clone https://github.com/VSHINE04/pcos-tracker-api
+cd pcos-tracker-api
 npm install
 
 # 2. Initialize sample data
-node data/seed.js
+node data/seed.js (not necessary to do this as repo is initialized with data already)
 
 # 3. Start server
 node server.js
