@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const router = express.Router();
 
-// Helper function to read users from file
+
 const getUsers = () => {
   try {
     const data = fs.readFileSync(path.join(__dirname, '../data/users.json'));
@@ -13,7 +13,6 @@ const getUsers = () => {
   }
 };
 
-// Helper function to save users to file
 const saveUsers = (users) => {
   fs.writeFileSync(
     path.join(__dirname, '../data/users.json'), 
@@ -21,7 +20,7 @@ const saveUsers = (users) => {
   );
 };
 
-// Register new user
+
 router.post('/register', (req, res) => {
   try {
     const { name, age, weight, height, avgCycleLength } = req.body;

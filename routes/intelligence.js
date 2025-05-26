@@ -7,7 +7,7 @@ const {
 
 const router = express.Router();
 
-// 🧠 Get smart insights for a user
+
 router.get('/insights/:userId', (req, res) => {
   try {
     const patterns = findSymptomPatterns(req.params.userId);
@@ -30,7 +30,7 @@ router.get('/insights/:userId', (req, res) => {
   }
 });
 
-// 📊 Get risk score for a user
+
 router.get('/risk-score/:userId', (req, res) => {
   try {
     const riskData = calculateRiskScore(req.params.userId);
@@ -52,7 +52,7 @@ router.get('/risk-score/:userId', (req, res) => {
   }
 });
 
-// 🔮 Predict next period
+
 router.get('/predict-period/:userId', (req, res) => {
   try {
     const prediction = predictNextPeriod(req.params.userId);
@@ -74,7 +74,7 @@ router.get('/predict-period/:userId', (req, res) => {
   }
 });
 
-// 📋 Get comprehensive report
+
 router.get('/report/:userId', (req, res) => {
   try {
     const insights = findSymptomPatterns(req.params.userId);

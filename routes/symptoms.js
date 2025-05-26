@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const router = express.Router();
 
-// Helper functions
+
 const getSymptoms = () => {
   try {
     const data = fs.readFileSync(path.join(__dirname, '../data/symptoms.json'));
@@ -20,12 +20,12 @@ const saveSymptoms = (symptoms) => {
   );
 };
 
-// Log daily symptoms
+
 router.post('/log', (req, res) => {
   try {
     const { userId, date, symptoms, severity, notes } = req.body;
     
-    // Validate required fields
+    
     if (!userId || !date || !symptoms || !severity) {
       return res.status(400).json({
         success: false,
@@ -35,7 +35,7 @@ router.post('/log', (req, res) => {
     
     const allSymptoms = getSymptoms();
     
-    // Create new symptom entry
+  
     const newSymptom = {
       id: `sym${Date.now()}`,
       userId,
@@ -64,13 +64,13 @@ router.post('/log', (req, res) => {
   }
 });
 
-// Get symptom history 
+
 router.get('/history/:userId', (req, res) => {
   try {
     const allSymptoms = getSymptoms();
     const userSymptoms = allSymptoms.filter(s => s.userId === req.params.userId);
     
-    // Sort by date 
+    
     userSymptoms.sort((a, b) => new Date(b.date) - new Date(a.date));
     
     res.json({
@@ -87,7 +87,7 @@ router.get('/history/:userId', (req, res) => {
   }
 });
 
-// for a specific date
+
 router.get('/date/:userId/:date', (req, res) => {
   try {
     const allSymptoms = getSymptoms();
