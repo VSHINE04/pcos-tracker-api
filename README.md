@@ -23,7 +23,7 @@ A comprehensive REST API that helps women with PCOS track symptoms, analyze patt
 
 ```bash
 # 1. Clone and setup
-git clone <repository-url>
+git clone <(https://github.com/VSHINE04/pcos-tracker-api)>
 cd pcos-health-tracker
 npm install
 
@@ -39,7 +39,7 @@ Server runs on `http://localhost:3000`
 ## 📁 Project Structure
 
 ```
-pcos-health-tracker/
+pcos-tracker-api/
 ├── server.js              # Main Express server
 ├── routes/
 │   ├── users.js          # User management endpoints
