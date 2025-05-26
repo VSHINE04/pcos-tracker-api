@@ -209,14 +209,5 @@ This API enables:
 - **Data-driven decisions** for lifestyle improvements
 - **Healthcare communication** with detailed reports
 
-## 🔮 Future Enhancements
-
-- Database integration (PostgreSQL/MongoDB)
-- User authentication with JWT
-- PDF report generation
-- Wearable device integration
-- Machine learning for advanced predictions
-
----
 
 **Built for women's health empowerment through smart technology.**
