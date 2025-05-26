@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// Helper functions to read data
+
 const getSymptoms = () => {
   try {
     const data = fs.readFileSync(path.join(__dirname, '../data/symptoms.json'));
@@ -20,7 +20,7 @@ const getPCOSKnowledge = () => {
   }
 };
 
-// 🧠 SMART FEATURE 1: Find symptom patterns
+
 const findSymptomPatterns = (userId) => {
   const symptoms = getSymptoms().filter(s => s.userId === userId);
   const patterns = [];
@@ -34,7 +34,7 @@ const findSymptomPatterns = (userId) => {
     }];
   }
   
-  // Pattern 1: Fatigue after poor sleep
+ 
   const fatigueEntries = symptoms.filter(s => s.symptoms.includes('fatigue'));
   const poorSleepEntries = symptoms.filter(s => s.symptoms.includes('poor_sleep'));
   
@@ -48,7 +48,7 @@ const findSymptomPatterns = (userId) => {
     });
   }
   
-  // Pattern 2: Most common symptoms
+ 
   const allSymptoms = symptoms.flatMap(s => s.symptoms);
   const symptomCounts = {};
   
@@ -73,7 +73,7 @@ const findSymptomPatterns = (userId) => {
   return patterns;
 };
 
-// 📊 SMART FEATURE 2: Calculate risk score
+
 const calculateRiskScore = (userId) => {
   const symptoms = getSymptoms().filter(s => s.userId === userId);
   const knowledge = getPCOSKnowledge();
@@ -99,7 +99,7 @@ const calculateRiskScore = (userId) => {
   });
   
   const avgScore = totalScore / Math.max(symptomCount, 1);
-  const finalScore = Math.min(avgScore * 2, 10); // Scale to 0-10
+  const finalScore = Math.min(avgScore * 2, 10); 
   
   let level, message;
   if (finalScore < 3) {
@@ -121,11 +121,11 @@ const calculateRiskScore = (userId) => {
   };
 };
 
-// 🔮 SMART FEATURE 3: Predict next period
+
 const predictNextPeriod = (userId) => {
   const symptoms = getSymptoms().filter(s => s.userId === userId);
   
-  // Look for period-related symptoms
+ 
   const periodSymptoms = symptoms.filter(s => 
     s.symptoms.includes('period') || 
     s.symptoms.includes('cramps') ||
@@ -140,7 +140,7 @@ const predictNextPeriod = (userId) => {
     };
   }
   
-  // Simple prediction based on average cycle
+
   const dates = periodSymptoms.map(s => new Date(s.date)).sort((a, b) => a - b);
   const gaps = [];
   
