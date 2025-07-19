@@ -4,7 +4,9 @@
 
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![GitHub stars](https://img.shields.io/github/stars/VSHINE04/pcos-tracker-api?style=for-the-badge)](https://github.com/VSHINE04/pcos-tracker-api/stargazers)
 
+⭐️ **If you like this project, please consider [starring it on GitHub](https://github.com/VSHINE04/pcos-tracker-api)!**
 ## 🎯 Overview
 
 A comprehensive REST API that helps women with PCOS track symptoms, analyze patterns, and get intelligent health insights. The system provides smart analysis beyond basic data storage - including risk assessment, pattern recognition, and period prediction.
